@@ -32,6 +32,12 @@ namespace MVC_Calculator.Controllers
         {
             return View();
         }
+
+        public IActionResult subtraction()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult add()
         {
@@ -40,6 +46,15 @@ namespace MVC_Calculator.Controllers
             int res = number1 + number2;
             ViewBag.Result = res.ToString();
             return View("addition");
+        }
+        [HttpPost]
+        public IActionResult sub()
+        {
+            int number1 = Convert.ToInt32(HttpContext.Request.Form["txtfirstnum"].ToString());
+            int number2 = Convert.ToInt32(HttpContext.Request.Form["txtsecondnum"].ToString());
+            int res = number1 - number2;
+            ViewBag.Result = res.ToString();
+            return View("subtraction");
         }
     }
 }
